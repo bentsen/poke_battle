@@ -32,7 +32,7 @@ const Page = async () => {
                 </div>
                 <div className={"w-full mt-10"}>
                     <div className={"mx-auto my-0 w-[1080px]"}>
-                        <div className={"flex justify-between px-20 items-center"}>
+                        <div className={"flex justify-between px-20 items-center mt-24"}>
                             <PokemonSelector pokemons={pokemons}/>
                             <span className={"text-lg"}>vs</span>
                             <PokemonSelector pokemons={pokemons}/>
