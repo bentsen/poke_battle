@@ -4,9 +4,17 @@
 
 
 
+img {
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 .pokemon-scroll {
 
-    animation: 100s linear slideInFromLeft infinite;
+    animation: 160s linear slideInFromLeft infinite;
 }
 
 @keyframes slideInFromLeft {
