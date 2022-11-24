@@ -27,7 +27,7 @@ const Page = async () => {
     return(
         <>
             <div className={"w-full"}>
-                <div className={"relative flex items-center"}>
+                <div className={"relative flex items-center flex-col"}>
                     <ImageCarousel pokemons={pokemons}/>
                 </div>
                 <div className={"w-full mt-10"}>
@@ -51,9 +51,9 @@ const Page = async () => {
 const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
     return(
         <>
-            <div id={"slider"} className={"w-full h-40 whitespace-nowrap pokemon-scroll"}>
+            <div id={"slider"} className={"w-full h-30 whitespace-nowrap pokemon-scroll"}>
                 {pokemons.map((pokemon) =>
-                    <div key={pokemon.id} className={"inline-block p-2 pointer-events-none"}>
+                    <div key={pokemon.id} className={"inline-block p-2 pointer-events-none border-b border-black"}>
                         <div className={"text-center"}>
                             <Image
                                 className={"h-16 w-auto"}
@@ -67,7 +67,7 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
                     </div>
                 )}
                 {pokemons.map((pokemon) =>
-                    <div key={pokemon.id} className={"inline-block p-2 pointer-events-none"}>
+                    <div key={pokemon.id} className={"inline-block p-2 pointer-events-none border-b border-black"}>
                         <div className={"text-center"}>
                             <Image
                                 className={"h-16 w-auto"}
@@ -87,7 +87,7 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
 const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
     return(
         <>
-            <div className={"w-96 h-96 bg-betterWhite rounded"}>
+            <div className={"w-96 h-96 bg-darkerWhite rounded"}>
                 <div className={"p-10 flex flex-col"}>
                     <div>
                         1. Choose first Pokemon

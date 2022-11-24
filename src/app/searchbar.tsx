@@ -27,11 +27,11 @@ const Searchbar = ({pokemons} : {pokemons: IPokemon[]}) => {
             <div>
                 <Combobox value={selected} onChange={handlePokemon} nullable>
                     <Combobox.Input as={Fragment} onChange={(e) => setSearch(e.target.value)} displayValue={(selected: SearchOptions) => selected?.name}>
-                        <input className={"bg-white text-black w-full h-9 rounded outline-0 indent-4"} type="text"/>
+                        <input className={"bg-betterWhite text-black w-full h-9 rounded outline-0 indent-4"} type="text"/>
                     </Combobox.Input>
                     {search && (
                         <div className={"relative"}>
-                            <Combobox.Options className={"bg-white text-black absolute w-full z-50 max-h-56 rounded overflow-y-scroll"}>
+                            <Combobox.Options className={"bg-betterWhite text-black absolute w-full z-50 max-h-56 rounded overflow-y-scroll"}>
                                 <p className={"ml-3 text-summoner-gray"}>Pokémons</p>
                                 {filteredPokemons != null && (
                                     filteredPokemons.length === 0 ? (
@@ -63,7 +63,7 @@ const SearchOptions = (props: SearchOptions) => {
             <Combobox.Option value={props}>
                 {({active, selected}) => (
                     <>
-                        <ul className={"text-white"}>
+                        <ul className={"text-betterWhite"}>
                             <li className={`hover:bg-red-400 ${active ? "bg-red-400" : ""} p-3 cursor-pointer`}>
                                 <div className={"flex items-center"}>
                                     <Image

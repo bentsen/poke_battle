@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body{
+    background-color: rgb(246,246,246);
+}
 
 img {
     -khtml-user-select: none;

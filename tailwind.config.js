@@ -9,6 +9,7 @@ module.exports = {
         navbar: '#f25251',
         betterWhite: 'rgb(246,246,246)',
         betterBlue: '#4169a7',
+        darkerWhite: '#eaeaea',
       },
       fontFamily: {
         sans: ['Lato', 'sans-serif']
