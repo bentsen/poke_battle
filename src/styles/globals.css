@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.pokemon-scroll {
+
+    animation: 100s linear slideInFromLeft infinite;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-980%);
+    }
+}
