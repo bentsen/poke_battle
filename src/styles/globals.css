@@ -14,7 +14,7 @@ img {
 
 .pokemon-scroll {
 
-    animation: 160s linear slideInFromLeft infinite;
+    animation: 190s linear slideInFromLeft infinite;
 }
 
 @keyframes slideInFromLeft {

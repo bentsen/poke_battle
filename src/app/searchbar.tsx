@@ -66,7 +66,12 @@ const SearchOptions = (props: SearchOptions) => {
                         <ul className={"text-white"}>
                             <li className={`hover:bg-red-400 ${active ? "bg-red-400" : ""} p-3 cursor-pointer`}>
                                 <div className={"flex items-center"}>
-                                    <Image src={image} alt={"poke"} width={20} height={20}/>
+                                    <Image
+                                        priority
+                                        src={image}
+                                        alt={"poke"}
+                                        width={20}
+                                        height={20}/>
                                     <div className={"flex justify-between items-center w-full"}>
                                         <div>
                                             <span className={"ml-1"}>{name}</span>
