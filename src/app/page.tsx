@@ -27,7 +27,7 @@ const Page = async () => {
     return(
         <>
             <div className={"w-full"}>
-                <div className={"relative flex items-center flex-col"}>
+                <div className={"relative flex items-center flex-col overflow-hidden"}>
                     <ImageCarousel pokemons={pokemons}/>
                 </div>
                 <div className={"w-full mt-10"}>
@@ -52,7 +52,7 @@ const Page = async () => {
 const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
     return(
         <>
-            <div id={"slider"} className={"w-full h-30 whitespace-nowrap pokemon-scroll"}>
+            <div id={"slider"} className={"w-screen h-30 whitespace-nowrap pokemon-scroll"}>
                 {pokemons.map((pokemon) =>
                     <div key={pokemon.id} className={"inline-block p-2 pointer-events-none border-b border-black"}>
                         <div className={"text-center"}>
@@ -96,6 +96,7 @@ const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
                     </div>
                     <div className={"h-40 relative"}>
                         <Image
+                            className={"pixel"}
                             src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"}
                             alt={"pokemon2"}
                             fill

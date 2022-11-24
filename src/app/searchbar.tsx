@@ -70,8 +70,8 @@ const SearchOptions = (props: SearchOptions) => {
                                         priority
                                         src={image}
                                         alt={"poke"}
-                                        width={20}
-                                        height={20}/>
+                                        width={30}
+                                        height={30}/>
                                     <div className={"flex justify-between items-center w-full"}>
                                         <div>
                                             <span className={"ml-1 text-black"}>{name}</span>
