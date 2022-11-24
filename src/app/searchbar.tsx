@@ -27,7 +27,7 @@ const Searchbar = ({pokemons} : {pokemons: IPokemon[]}) => {
             <div>
                 <Combobox value={selected} onChange={handlePokemon} nullable>
                     <Combobox.Input as={Fragment} onChange={(e) => setSearch(e.target.value)} displayValue={(selected: SearchOptions) => selected?.name}>
-                        <input className={"bg-white w-full h-9 rounded outline-0 indent-4"} type="text"/>
+                        <input className={"bg-white text-black w-full h-9 rounded outline-0 indent-4"} type="text"/>
                     </Combobox.Input>
                     {search && (
                         <div className={"relative"}>
@@ -74,7 +74,7 @@ const SearchOptions = (props: SearchOptions) => {
                                         height={20}/>
                                     <div className={"flex justify-between items-center w-full"}>
                                         <div>
-                                            <span className={"ml-1"}>{name}</span>
+                                            <span className={"ml-1 text-black"}>{name}</span>
                                         </div>
                                     </div>
                                 </div>
