@@ -4,7 +4,7 @@ import Link from "next/link";
 const Navbar = () => {
     return(
         <>
-            <nav className={"w-full h-16 bg-navbar"}>
+            <nav className={"w-full h-16 bg-betterBlack"}>
                 <div className={"flex items-center justify-between h-full px-5 md:px-32"}>
                     <div className={"text-white md:hidden"}>
                         <svg
@@ -30,13 +30,13 @@ const Navbar = () => {
                     <div className={"h-full"}>
                         <ul className={"hidden md:flex flex-row items-center text-lg font-medium text-betterWhite h-full"}>
                             <Link href={"/"}>
-                                <li className={"cursor-pointer hover:underline hover:bg-red-700 p-4"}>Home</li>
+                                <li className={"cursor-pointer hover:underline hover:bg-hoverColor p-4"}>Home</li>
                             </Link>
                             <Link href={"/about"}>
-                                <li className={"cursor-pointer hover:underline hover:bg-red-700 p-4"}>About</li>
+                                <li className={"cursor-pointer hover:underline hover:bg-hoverColor p-4"}>About</li>
                             </Link>
-                            <li className={"cursor-pointer hover:underline hover:bg-red-700 p-4"}>something</li>
-                            <li className={"cursor-pointer hover:underline hover:bg-red-700 p-4"}>something</li>
+                            <li className={"cursor-pointer hover:underline hover:bg-hoverColor p-4"}>something</li>
+                            <li className={"cursor-pointer hover:underline hover:bg-hoverColor p-4"}>something</li>
                         </ul>
                     </div>
                 </div>

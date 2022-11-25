@@ -56,13 +56,15 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
                 {pokemons.map((pokemon) =>
                     <div key={pokemon.id} className={"inline-block p-2 pointer-events-none border-b border-black"}>
                         <div className={"text-center"}>
-                            <Image
-                                className={"h-16 w-auto"}
-                                priority
-                                src={pokemon.image}
-                                alt={pokemon.name}
-                                width={100}
-                                height={120}/>
+                            <div className={"bg-darkerWhite rounded-2xl"}>
+                                <Image
+                                    className={"h-16 w-auto"}
+                                    priority
+                                    src={pokemon.image}
+                                    alt={pokemon.name}
+                                    width={100}
+                                    height={120}/>
+                            </div>
                             <span>{pokemon.name}</span>
                         </div>
                     </div>
@@ -88,21 +90,23 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
 const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
     return(
         <>
-            <div className={"w-96 h-96 bg-darkerWhite rounded"}>
-                <div className={"p-10 flex flex-col"}>
+            <div className={"w-96 h-96 bg-darkerWhite border border-hoverColor rounded"}>
+                <div className={"flex flex-col"}>
                     <div>
-                        1. Choose first Pokemon
                         <Searchbar pokemons={pokemons}/>
                     </div>
-                    <div className={"h-40 relative"}>
-                        <Image
-                            className={"pixel"}
-                            src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"}
-                            alt={"pokemon2"}
-                            fill
-                        />
+                    <div className={"border-b border-hoverColor h-52 text-center font-bold text-xl"}>
+                        <div className={"h-40 relative"}>
+                            <Image
+                                className={"pixel"}
+                                src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"}
+                                alt={"pokemon2"}
+                                fill
+                            />
+                        </div>
+                        <span>Pikachu</span>
                     </div>
-                    <div>
+                    <div className={"p-5"}>
                         <div>
                             Stats:
                         </div>

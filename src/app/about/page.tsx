@@ -20,6 +20,12 @@ const About = () => {
                                     <span className={"p-2"}>Machine learning is weinell/gallar skriv et eller andet fedt her tabere</span>
                                 </div>
                             </div>
+                            <div className={"mt-10"}>
+                                <h3 className={"font-bold"}>How does PokéBattle work?</h3>
+                                <div>
+                                    <span className={"p-2"}>The way PokéBattle works weinell/gallar skriv et eller andet fedt her tabere</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
