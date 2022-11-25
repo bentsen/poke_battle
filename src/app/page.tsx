@@ -1,24 +1,24 @@
 import Image from "next/image";
-import Searchbar from './searchbar'
+import PokemonSelector from "./pokemonSelector";
+import {IPokemon} from "../utils/@types/pokemon.t";
 
 
-interface IPokemon {
-    id: number
+interface IResult {
     name: string,
-    image: string,
+    url: string
 }
 
 const getAllPokeNames = async () => {
-
-    const url = "https://pokeapi.co/api/v2/pokemon?limit=150";
-    const res = await fetch(url);
-    const data = await res.json();
-    return data.results.map((data: IPokemon, index: number) => ({
-        name: data.name,
-        id: index + 1,
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index +
-        1}.png`,
-    }));
+    const url = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=0";
+    return fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const results: IResult[] = data.results
+            const promisesArray = results.map(result => {
+                return fetch(result.url).then(response => response.json());
+            })
+            return Promise.all(promisesArray);
+        });
 }
 
 const Page = async () => {
@@ -58,7 +58,7 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
                                 <Image
                                     className={"h-16 w-auto"}
                                     priority
-                                    src={pokemon.image}
+                                    src={pokemon.sprites.front_shiny}
                                     alt={pokemon.name}
                                     width={100}
                                     height={120}/>
@@ -73,7 +73,7 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
                             <div className={"bg-darkerWhite rounded-2xl"}>
                                 <Image
                                     className={"h-16 w-auto"}
-                                    priority src={pokemon.image}
+                                    priority src={pokemon.sprites.front_shiny}
                                     alt={pokemon.name}
                                     width={100}
                                     height={120}/>
@@ -82,59 +82,6 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
                         </div>
                     </div>
                 )}
-            </div>
-        </>
-    )
-}
-
-const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
-    return(
-        <>
-            <div className={"w-96 h-96 bg-darkerWhite border border-hoverColor rounded"}>
-                <div className={"flex flex-col"}>
-                    <div>
-                        <Searchbar pokemons={pokemons}/>
-                    </div>
-                    <div className={"border-b border-hoverColor h-52 text-center font-bold text-xl"}>
-                        <div className={"h-40 relative"}>
-                            <Image
-                                className={"pixel"}
-                                src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"}
-                                alt={"pokemon2"}
-                                fill
-                            />
-                        </div>
-                        <span>Pikachu</span>
-                    </div>
-                    <div className={"p-5"}>
-                        <div>
-                            Stats:
-                        </div>
-                        <div className={"flex flex-wrap gap-2 text-xs"}>
-                            <div>
-                                HP: 100
-                            </div>
-                            <div>
-                                Attack: 100
-                            </div>
-                            <div>
-                                Defense: 100
-                            </div>
-                            <div>
-                                Sp_Attack: 100
-                            </div>
-                            <div>
-                                Sp_Defense: 100
-                            </div>
-                            <div>
-                                Speed: 100
-                            </div>
-                            <div>
-                                Sum_stats: 100
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </>
     )

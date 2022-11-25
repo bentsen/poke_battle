@@ -2,31 +2,26 @@
 
 import Image from "next/image";
 import {Combobox} from "@headlessui/react";
-import {Fragment, useState} from "react";
+import React, {Fragment, useState} from "react";
+import {IPokemon} from "../utils/@types/pokemon.t";
 
-interface IPokemon {
-    id: number
-    name: string,
-    image: string,
-}
-
-const Searchbar = ({pokemons} : {pokemons: IPokemon[]}) => {
+const Searchbar = ({pokemons, setPokemon} : {pokemons: IPokemon[], setPokemon: React.Dispatch<React.SetStateAction<IPokemon | undefined>>}) => {
     const [search, setSearch] = useState("")
-    const [selected, setSelected] = useState<SearchOptions>();
+    const [selected, setSelected] = useState<IPokemon | undefined>();
 
     const filteredPokemons = !search
         ? null
         : pokemons.filter((s) => s.name.toLowerCase().startsWith(search.toLowerCase()));
 
-    const handlePokemon = () => {
-
+    const handlePokemon = (state: IPokemon) => {
+        setPokemon(state)
     }
 
     return(
         <>
             <div>
                 <Combobox value={selected} onChange={handlePokemon} nullable>
-                    <Combobox.Input as={Fragment} onChange={(e) => setSearch(e.target.value)} displayValue={(selected: SearchOptions) => selected?.name}>
+                    <Combobox.Input as={Fragment} onChange={(e) => setSearch(e.target.value)} displayValue={(selected: IPokemon) => selected?.name}>
                         <input
                             className={"bg-betterBlack text-betterWhite w-full h-12 rounded-t outline-0 indent-4"}
                             placeholder={"Type Pokémon name"}
@@ -38,10 +33,10 @@ const Searchbar = ({pokemons} : {pokemons: IPokemon[]}) => {
                                 <p className={"ml-3 text-summoner-gray"}>Pokémons</p>
                                 {filteredPokemons != null && (
                                     filteredPokemons.length === 0 ? (
-                                        <SearchOptions name={search} image={""}/>
+                                        <SearchOptions pokemon={undefined}/>
                                     ) : (
                                         filteredPokemons.map((e) => (
-                                            <SearchOptions key={e.id} name={e.name} image={e.image}/>
+                                            <SearchOptions key={e.id} pokemon={e}/>
                                         ))
                                     )
                                 )}
@@ -54,33 +49,30 @@ const Searchbar = ({pokemons} : {pokemons: IPokemon[]}) => {
     )
 }
 
-interface SearchOptions {
-    name: string,
-    image: string,
-}
+const SearchOptions = ({pokemon} : {pokemon: IPokemon | undefined}) => {
 
-const SearchOptions = (props: SearchOptions) => {
-    const {name, image} = props;
     return(
         <>
-            <Combobox.Option value={props}>
+            <Combobox.Option value={pokemon}>
                 {({active, selected}) => (
                     <>
                         <ul className={""}>
                             <li className={`hover:bg-hoverColor hover:text-betterWhite ${active ? "bg-hoverColor text-betterWhite" : ""} p-3 cursor-pointer`}>
-                                <div className={"flex items-center"}>
-                                    <Image
-                                        priority
-                                        src={image}
-                                        alt={"poke"}
-                                        width={30}
-                                        height={30}/>
-                                    <div className={"flex justify-between items-center w-full"}>
-                                        <div>
-                                            <span className={"ml-1"}>{name}</span>
+                                {pokemon ? (
+                                    <div className={"flex items-center"}>
+                                        <Image
+                                            priority
+                                            src={pokemon.sprites.front_shiny}
+                                            alt={"poke"}
+                                            width={30}
+                                            height={30}/>
+                                        <div className={"flex justify-between items-center w-full"}>
+                                            <div>
+                                                <span className={"ml-1"}>{pokemon.name}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                ) : "No pokemon"}
                             </li>
                         </ul>
                     </>
