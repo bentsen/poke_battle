@@ -32,14 +32,12 @@ const Page = async () => {
                 </div>
                 <div className={"w-full mt-10"}>
                     <div className={"mx-auto my-0 w-[1080px]"}>
-                        <div className={"flex justify-between px-20 items-center mt-24"}>
+                        <div className={"flex justify-between px-14 items-center mt-24"}>
                             <PokemonSelector pokemons={pokemons}/>
-                            <span className={"text-lg"}>vs</span>
+                            <div className={"flex flex-col"}>
+                                <button className={"w-40 h-9 bg-betterBlue text-white rounded"}>Fight</button>
+                            </div>
                             <PokemonSelector pokemons={pokemons}/>
-                        </div>
-                        <div className={"flex items-center mt-20 flex-col gap-2"}>
-                            <div className={"text-left w-40"}>3.Fight</div>
-                            <button className={"w-40 h-9 bg-betterBlue text-white rounded"}>Fight</button>
                         </div>
                     </div>
                 </div>
@@ -72,12 +70,14 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
                 {pokemons.map((pokemon) =>
                     <div key={pokemon.id} className={"inline-block p-2 pointer-events-none border-b border-black"}>
                         <div className={"text-center"}>
-                            <Image
-                                className={"h-16 w-auto"}
-                                priority src={pokemon.image}
-                                alt={pokemon.name}
-                                width={100}
-                                height={120}/>
+                            <div className={"bg-darkerWhite rounded-2xl"}>
+                                <Image
+                                    className={"h-16 w-auto"}
+                                    priority src={pokemon.image}
+                                    alt={pokemon.name}
+                                    width={100}
+                                    height={120}/>
+                            </div>
                             <span>{pokemon.name}</span>
                         </div>
                     </div>
