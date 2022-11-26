@@ -2,11 +2,23 @@
 
 import Searchbar from "./searchbar";
 import Image from "next/image";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {IPokemon} from "../utils/@types/pokemon.t";
+import {IPokemonData} from "../utils/@types/pokemonData.t";
 
 const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
     const [pokemon, setPokemon] = useState<IPokemon | undefined>()
+    const [pokemonData, setPokemonData] = useState<IPokemonData>()
+
+    useEffect( () => {
+        const getPokeData = async () => {
+            if(pokemon == undefined) return
+            const res = await fetch(pokemon?.url)
+            const data = await res.json()
+            setPokemonData(data)
+        }
+        getPokeData()
+    }, [pokemon])
 
     return(
         <>
@@ -16,14 +28,14 @@ const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
                         <Searchbar pokemons={pokemons} setPokemon={setPokemon}/>
                     </div>
                         <div className={"h-52 text-center font-bold text-xl"}>
-                            {pokemon ? (
+                            {pokemonData ? (
                                 <div>
                                     <div className={"h-56 relative flex items-center justify-center pt-10"}>
                                         <div className={"bg-hoverColor h-full w-2/3 rounded-lg"}>
                                             <Image
                                                 className={"p-2"}
-                                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon?.id!}.svg`}
-                                                alt={pokemon.name}
+                                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`}
+                                                alt={pokemonData.name}
                                                 fill
                                             />
                                         </div>
@@ -34,7 +46,7 @@ const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
                                 </div>
                             ) : "no pokemon"}
                         </div>
-                        {pokemon?.stats != undefined ? (
+                        {pokemonData?.stats != undefined ? (
                             <div className={"pt-14 p-5"}>
                                 <div className={"flex flex-col"}>
                                     <div>
@@ -42,7 +54,7 @@ const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
                                             Stats:
                                         </div>
                                         <div className={"flex flex-wrap gap-2 text-sm"}>
-                                            {pokemon?.stats.map((e) => (
+                                            {pokemonData.stats.map((e) => (
                                                 <div key={e.stat.name}>
                                                     <span className={"uppercase"}>{e.stat.name}:</span>
                                                     <span className={"pl-1"}>{e.base_stat}</span>

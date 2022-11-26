@@ -35,8 +35,8 @@ const Searchbar = ({pokemons, setPokemon} : {pokemons: IPokemon[], setPokemon: R
                                     filteredPokemons.length === 0 ? (
                                         <SearchOptions pokemon={undefined}/>
                                     ) : (
-                                        filteredPokemons.map((e) => (
-                                            <SearchOptions key={e.id} pokemon={e}/>
+                                        filteredPokemons.map((e, index) => (
+                                            <SearchOptions key={index} pokemon={e}/>
                                         ))
                                     )
                                 )}
@@ -48,6 +48,7 @@ const Searchbar = ({pokemons, setPokemon} : {pokemons: IPokemon[], setPokemon: R
         </>
     )
 }
+
 
 const SearchOptions = ({pokemon} : {pokemon: IPokemon | undefined}) => {
 
@@ -62,7 +63,7 @@ const SearchOptions = ({pokemon} : {pokemon: IPokemon | undefined}) => {
                                     <div className={"flex items-center"}>
                                         <Image
                                             priority
-                                            src={pokemon.sprites.front_shiny}
+                                            src={pokemon.image}
                                             alt={"poke"}
                                             width={30}
                                             height={30}/>

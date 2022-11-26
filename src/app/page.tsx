@@ -2,27 +2,26 @@ import Image from "next/image";
 import PokemonSelector from "./pokemonSelector";
 import {IPokemon} from "../utils/@types/pokemon.t";
 
-
 interface IResult {
     name: string,
     url: string
 }
 
-const getAllPokeNames = async () => {
+const getAllPokemons = async () => {
     const url = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=0";
-    return fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const results: IResult[] = data.results
-            const promisesArray = results.map(result => {
-                return fetch(result.url).then(response => response.json());
-            })
-            return Promise.all(promisesArray);
-        });
+    const response = await fetch(url)
+    const data = await response.json()
+
+    return data.results.map((data: IResult, index: number) => ({
+        id: index + 1,
+        name: data.name,
+        url: data.url,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${index + 1}.png`
+    }))
 }
 
 const Page = async () => {
-    const pokemons: IPokemon[] = await getAllPokeNames()
+    const pokemons: IPokemon[] = await getAllPokemons()
 
     return(
         <>
@@ -51,14 +50,14 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
     return(
         <>
             <div id={"slider"} className={"w-screen h-30 whitespace-nowrap pokemon-scroll"}>
-                {pokemons.map((pokemon) =>
-                    <div key={pokemon.id} className={"inline-block p-2 pointer-events-none border-b border-black"}>
+                {pokemons.map((pokemon, index) =>
+                    <div key={index} className={"inline-block p-2 pointer-events-none border-b border-black"}>
                         <div className={"text-center"}>
                             <div className={"bg-darkerWhite rounded-2xl"}>
                                 <Image
                                     className={"h-16 w-auto"}
                                     priority
-                                    src={pokemon.sprites.front_shiny}
+                                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${index + 1}.png`}
                                     alt={pokemon.name}
                                     width={100}
                                     height={120}/>
@@ -67,13 +66,14 @@ const ImageCarousel = ({pokemons}: {pokemons: IPokemon[]}) => {
                         </div>
                     </div>
                 )}
-                {pokemons.map((pokemon) =>
-                    <div key={pokemon.id} className={"inline-block p-2 pointer-events-none border-b border-black"}>
+                {pokemons.map((pokemon, index) =>
+                    <div key={index} className={"inline-block p-2 pointer-events-none border-b border-black"}>
                         <div className={"text-center"}>
                             <div className={"bg-darkerWhite rounded-2xl"}>
                                 <Image
                                     className={"h-16 w-auto"}
-                                    priority src={pokemon.sprites.front_shiny}
+                                    priority
+                                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${index + 1}.png`}
                                     alt={pokemon.name}
                                     width={100}
                                     height={120}/>
