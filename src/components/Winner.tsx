@@ -31,11 +31,8 @@ const Winner = ({winner}: { winner: number }) => {
                         Winner is
                     </h2>
                     <h2 className={"text-4xl"}>
-                        {pokemon.name}
+                        ✨{pokemon.name}✨
                     </h2>
-                    <div className={"flex flex-row"}>
-                        {pokemon.image}
-                    </div>
                 </div>
             ): null}
         </>
