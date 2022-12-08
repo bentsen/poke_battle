@@ -20,6 +20,7 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
     const [pokeOne, setPokeOne] = useState<number>(0);
     const [pokeTwo, setPokeTwo] = useState<number>(0);
     const [winner, setWinner] = useState<Prediction | undefined>();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const filterPokemon = (toFilter: number) => {
         const filtered = pokemons.filter((poke) => poke.id == toFilter);
@@ -28,10 +29,12 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
 
     const fight = async (first: number, second: number) => {
         if (first == 0 || second == 0) return;
+        setIsLoading(true);
         const req = await axios.get<Prediction>(`/api/battle/${first}/${second}`);
         //const req = await fetch(`/api/hello`);
         const data = await req.data;
         setWinner(data)
+        setIsLoading(false);
     }
 
     return (
@@ -42,6 +45,7 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
                     <button
                         className={"w-40 h-9 bg-betterBlue text-white rounded"}
                         onClick={() => fight(pokeOne, pokeTwo)}
+                        disabled={isLoading}
                     >
                         Fight
                     </button>
@@ -52,7 +56,6 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
                 <>
                     <div className={"flex justify-center pt-5 text-center"}>
                         <Winner winner={winner.winner}/>
-
                     </div>
                     <div className={"flex flex-col justify-center items-center text-"}>
                         <p>
