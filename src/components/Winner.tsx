@@ -15,7 +15,6 @@ const Winner = ({winner}: { winner: number }) => {
     const [pokemon, setPokemon] = useState<IPokemon>();
     useEffect(() => {
         const getPokemon = async () => {
-            console.log("asdjhasd")
             const url = `https://pokeapi.co/api/v2/pokemon/${winner}`;
             const response = await axios.get<IPokemon>(url)
             const data = response.data;

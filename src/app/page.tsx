@@ -4,6 +4,7 @@ import {IPokemon} from "../utils/@types/pokemon.t";
 import {useState} from "react";
 import Pokebattle from "./Pokebattle";
 import ImageCarousel from "../components/ImageCarousel";
+import captitalize from "../utils/captitalize";
 
 interface IResult {
     name: string,
@@ -17,7 +18,7 @@ const getAllPokemons = async () => {
 
     return data.results.map((data: IResult, index: number) => ({
         id: index + 1,
-        name: data.name,
+        name: captitalize(data.name),
         url: data.url,
         image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
     }))
