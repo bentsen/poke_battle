@@ -4,12 +4,18 @@ const Footer = () => {
 
     return (
         <>
-            <div className={"w-full bg-betterBlack h-auto pt-5 pb-5"}>
-                <div className={"pl-[10%] h-full flex items-center text-white"}>
+            <div className={"w-full flex flex-col md:flex-row justify-center items-center bg-betterBlack h-auto pt-5 pb-5"}>
+                <div className={"h-full text-white"}>
                     Created by
-                    <Link className={"text-blue-400 pl-2 hover:underline"} href={"https://github.com/Freddiiy"}>Frederik Gallar,</Link>
-                    <Link className={"text-blue-400 pl-2 hover:underline"} href={"https://github.com/Weinell"}>Nikolaj Weinell,</Link>
-                    <Link className={"text-blue-400 pl-2 hover:underline"} href={"https://github.com/bentsen"}>Mikkel Bentsen.</Link>
+                </div>
+                <div>
+
+                <Link className={"text-blue-400 pl-2 hover:underline"} href={"https://github.com/Freddiiy"}>Frederik
+                    Gallar,</Link>
+                <Link className={"text-blue-400 pl-2 hover:underline"} href={"https://github.com/Weinell"}>Nikolaj
+                    Weinell,</Link>
+                <Link className={"text-blue-400 pl-2 hover:underline"} href={"https://github.com/bentsen"}>Mikkel
+                    Bentsen.</Link>
                 </div>
             </div>
         </>
