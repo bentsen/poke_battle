@@ -2,11 +2,11 @@
 
 import Searchbar from "./searchbar";
 import Image from "next/image";
-import {useEffect, useState} from "react";
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {IPokemon} from "../utils/@types/pokemon.t";
 import {IPokemonData} from "../utils/@types/pokemonData.t";
 
-const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
+const PokemonSelector = ({pokemons, setPokemonId} : {pokemons: IPokemon[], setPokemonId: Dispatch<SetStateAction<number>>}) => {
     const [pokemon, setPokemon] = useState<IPokemon | undefined>()
     const [pokemonData, setPokemonData] = useState<IPokemonData>()
 
@@ -15,6 +15,7 @@ const PokemonSelector = ({pokemons} : {pokemons: IPokemon[]}) => {
             if(pokemon == undefined) return
             const res = await fetch(pokemon?.url)
             const data = await res.json()
+            setPokemonId(pokemon.id);
             setPokemonData(data)
         }
         getPokeData()
