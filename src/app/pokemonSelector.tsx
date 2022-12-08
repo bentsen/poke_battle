@@ -23,7 +23,7 @@ const PokemonSelector = ({
             setPokemonData(data)
         }
         getPokeData()
-    }, [pokemon])
+    }, [pokemon, setPokemonId])
 
     return (
         <>
@@ -46,7 +46,7 @@ const PokemonSelector = ({
                                     </div>
                                 </div>
                                 <h2 className={"text-3xl font-bold"}>
-                                        {captitalize(pokemonData?.name)}
+                                    {captitalize(pokemonData?.name)}
                                 </h2>
                             </div>
                         ) : "Please select a Pokémon"}

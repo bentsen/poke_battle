@@ -25,12 +25,13 @@ const Searchbar = ({pokemons, setPokemon} : {pokemons: IPokemon[], setPokemon: R
                         <input
                             className={"bg-betterBlack text-betterWhite w-full h-12 rounded-t outline-0 indent-4"}
                             placeholder={"Type Pokémon name"}
-                            type="text"/>
+                            type="text"
+                            autoComplete={"off"}
+                        />
                     </Combobox.Input>
                     {search && (
                         <div className={"relative"}>
                             <Combobox.Options className={"bg-betterWhite text-black absolute w-full max-h-56 z-50 rounded-b overflow-y-scroll"}>
-                                <p className={"ml-3 text-summoner-gray"}>Pokémons</p>
                                 {filteredPokemons != null && (
                                     filteredPokemons.length === 0 ? (
                                         <SearchOptions pokemon={undefined}/>
@@ -57,7 +58,7 @@ const SearchOptions = ({pokemon} : {pokemon: IPokemon | undefined}) => {
             <Combobox.Option value={pokemon}>
                 {({active, selected}) => (
                     <>
-                        <ul className={""}>
+                        <ul>
                             <li className={`hover:bg-hoverColor hover:text-betterWhite ${active ? "bg-hoverColor text-betterWhite" : ""} p-3 cursor-pointer`}>
                                 {pokemon ? (
                                     <div className={"flex items-center"}>
@@ -73,7 +74,7 @@ const SearchOptions = ({pokemon} : {pokemon: IPokemon | undefined}) => {
                                             </div>
                                         </div>
                                     </div>
-                                ) : "No pokemon"}
+                                ) : "No Pokémon found..."}
                             </li>
                         </ul>
                     </>
