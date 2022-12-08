@@ -9,8 +9,10 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+    // const apiurl = process.env.API_URL || "http://localhost:8000/"
+    const apiurl = "https://pokebattleapi-production.up.railway.app"
     const {query: {pokeone, poketwo}} = req;
-    const response = await axios.get(`http://127.0.0.1:8000/battle/${pokeone}/${poketwo}`);
+    const response = await axios.get(`${apiurl}/battle/${pokeone}/${poketwo}`);
     const data = await response.data;
     res.status(200).json(data)
 }
