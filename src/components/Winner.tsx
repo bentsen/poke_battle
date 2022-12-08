@@ -3,6 +3,7 @@ import {IPokemon} from "../utils/@types/pokemon.t";
 import {useEffect, useState} from "react";
 import {Prediction} from "../app/Pokebattle";
 import axios from "axios";
+import captitalize from "../utils/captitalize";
 
 const getPokemon = async (pokemon: number) => {
     const url = `https://pokeapi.co/api/v2/${pokemon}`;
@@ -31,7 +32,7 @@ const Winner = ({winner}: { winner: number }) => {
                         Winner is
                     </h2>
                     <h2 className={"text-4xl"}>
-                        ✨{pokemon.name}✨
+                        ✨{captitalize(pokemon.name)}✨
                     </h2>
                 </div>
             ): null}

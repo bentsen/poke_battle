@@ -5,6 +5,7 @@ import {IPokemon} from "../utils/@types/pokemon.t";
 import {useState} from "react";
 import axios from "axios";
 import Winner from "../components/Winner";
+import captitalize from "../utils/captitalize";
 
 export interface Prediction {
     pokeOne: number;
@@ -55,10 +56,10 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
                     </div>
                     <div className={"flex flex-col justify-center items-center text-"}>
                         <p>
-                            Actual winner: {filterPokemon(winner.actualWinner).name}
+                            Actual winner: {captitalize(filterPokemon(winner.actualWinner).name)}
                         </p>
                         <p>
-                            Prediction: {filterPokemon(winner.winner).name}
+                            Prediction: {captitalize(filterPokemon(winner.winner).name)}
                         </p>
                         <p>
                             Accuracy: {(winner.accuracy * 100).toFixed(2)}%

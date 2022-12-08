@@ -5,6 +5,7 @@ import Image from "next/image";
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {IPokemon} from "../utils/@types/pokemon.t";
 import {IPokemonData} from "../utils/@types/pokemonData.t";
+import captitalize from "../utils/captitalize";
 
 const PokemonSelector = ({
                              pokemons,
@@ -46,7 +47,7 @@ const PokemonSelector = ({
                                     </div>
                                 </div>
                                 <span>
-                                        {pokemonData?.name}
+                                        {captitalize(pokemonData?.name)}
                                     </span>
                             </div>
                         ) : "no pokemon"}
@@ -66,7 +67,7 @@ const PokemonSelector = ({
                                                         <div
                                                             className={`absolute p-2 rounded bg-betterBlack -translate-y-10 ${openTooltip ? "block" : "hidden"}`}>
                                                             <p className={"text-white text-2xl"}>
-                                                                {type.type.name}
+                                                                {captitalize(type.type.name)}
                                                             </p>
                                                         </div>
                                                         <Image
