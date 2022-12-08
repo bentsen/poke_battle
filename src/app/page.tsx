@@ -33,8 +33,8 @@ const Page = async () => {
                 <div className={"relative flex items-center flex-col overflow-hidden"}>
                     <ImageCarousel />
                 </div>
-                <div className={"w-full mt-10"}>
-                    <div className={"mx-auto my-0 w-[1080px]"}>
+                <div className={"mt-2 md:mt-10"}>
+                    <div className={"max-w-7xl mx-auto"}>
                         <Pokebattle pokemons={pokemons}/>
                     </div>
                 </div>

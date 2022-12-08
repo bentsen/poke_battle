@@ -41,16 +41,19 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
 
     return (
         <>
-            <div className={"flex justify-between px-14 items-center mt-16"}>
+            <div className={"flex flex-col md:flex-row justify-between items-center px-0 md:px-20 lg:px-40 flex-shrink-0"}>
                 <PokemonSelector pokemons={pokemons} setPokemonId={setPokeOne}/>
-                <div className={"flex flex-col"}>
+                <div className={"flex flex-col justify-center items-center p-3 md:p-5"}>
                     <button
-                        className={"w-40 h-9 bg-indigo-600 hover:bg-indigo-700 text-white rounded disabled:bg-indigo-800 disabled:cursor-not-allowed"}
+                        className={"w-40 h-9 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded disabled:bg-indigo-800 disabled:cursor-not-allowed"}
                         onClick={() => fight(pokeOne, pokeTwo)}
                         disabled={isLoading || fightDisabled}
                     >
-                        Fight
+                        {isLoading ? "Fighting..." : "Fight!"}
                     </button>
+                    {fightDisabled ? (
+                        <p className={"text-sm text-center"}>You need to select 2 Pokémon</p>
+                    ): null}
                 </div>
                 <PokemonSelector pokemons={pokemons} setPokemonId={setPokeTwo}/>
             </div>

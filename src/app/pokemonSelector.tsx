@@ -13,7 +13,6 @@ const PokemonSelector = ({
                          }: { pokemons: IPokemon[], setPokemonId: Dispatch<SetStateAction<number>> }) => {
     const [pokemon, setPokemon] = useState<IPokemon | undefined>()
     const [pokemonData, setPokemonData] = useState<IPokemonData>()
-    const [openTooltip, setOpenTooltip] = useState<boolean>(false);
 
     useEffect(() => {
         const getPokeData = async () => {
@@ -60,21 +59,17 @@ const PokemonSelector = ({
                                         {pokemonData.types.map((type => (
                                             <>
                                                 <div key={type.slot} className={"flex flex-col text-center"}>
-                                                    <div className={"h-12 w-12"}
-                                                         onMouseEnter={() => setOpenTooltip(true)}
-                                                         onMouseLeave={() => setOpenTooltip(false)}
-                                                    >
-                                                        <div
-                                                            className={`absolute p-2 rounded bg-betterBlack -translate-y-10 ${openTooltip ? "block" : "hidden"}`}>
-                                                            <p className={"text-white text-2xl"}>
-                                                                {captitalize(type.type.name)}
-                                                            </p>
-                                                        </div>
+                                                    <div className={"h-12"}>
                                                         <Image
                                                             src={`/types/Pokémon_${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}_Type_Icon.svg`}
                                                             alt={"type"} width={50} height={50}
-
                                                         />
+                                                        <div
+                                                            className={`px-2 rounded bg-betterBlack`}>
+                                                            <p className={"text-white text-md"}>
+                                                                {captitalize(type.type.name)}
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
 
