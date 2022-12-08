@@ -35,8 +35,6 @@ const Navbar = () => {
                             <Link href={"/about"}>
                                 <li className={"cursor-pointer hover:underline hover:bg-hoverColor p-4"}>About</li>
                             </Link>
-                            <li className={"cursor-pointer hover:underline hover:bg-hoverColor p-4"}>something</li>
-                            <li className={"cursor-pointer hover:underline hover:bg-hoverColor p-4"}>something</li>
                         </ul>
                     </div>
                 </div>
