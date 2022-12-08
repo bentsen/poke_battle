@@ -46,14 +46,14 @@ const PokemonSelector = ({
                                         />
                                     </div>
                                 </div>
-                                <span>
+                                <h2 className={"text-3xl font-bold"}>
                                         {captitalize(pokemonData?.name)}
-                                    </span>
+                                </h2>
                             </div>
                         ) : "no pokemon"}
                     </div>
                     {pokemonData?.stats != undefined ? (
-                        <div className={""}>
+                        <div>
                             <div className={"flex flex-col"}>
                                 <div className={"flex flex-col items-center justify-center gap-5"}>
                                     <div className={"flex flex-wrap gap-5 text-sm"}>

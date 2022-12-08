@@ -27,6 +27,8 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
         return filtered[0];
     }
 
+    const fightDisabled = pokeOne == 0 || pokeTwo == 0;
+
     const fight = async (first: number, second: number) => {
         if (first == 0 || second == 0) return;
         setIsLoading(true);
@@ -43,9 +45,9 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
                 <PokemonSelector pokemons={pokemons} setPokemonId={setPokeOne}/>
                 <div className={"flex flex-col"}>
                     <button
-                        className={"w-40 h-9 bg-betterBlue text-white rounded"}
+                        className={"w-40 h-9 bg-indigo-600 hover:bg-indigo-700 text-white rounded disabled:bg-indigo-800 disabled:cursor-not-allowed"}
                         onClick={() => fight(pokeOne, pokeTwo)}
-                        disabled={isLoading}
+                        disabled={isLoading || fightDisabled}
                     >
                         Fight
                     </button>
