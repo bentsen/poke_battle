@@ -41,7 +41,7 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
 
     return (
         <>
-            <div className={"flex flex-col md:flex-row justify-between items-center px-0 md:px-20 lg:px-40 flex-shrink-0"}>
+            <div className={"flex flex-col md:flex-row justify-between items-center px-4 md:px-4 lg:px-30 flex-shrink-0"}>
                 <PokemonSelector pokemons={pokemons} setPokemonId={setPokeOne}/>
                 <div className={"flex flex-col justify-center items-center p-3 md:p-5"}>
                     <button
