@@ -39,7 +39,7 @@ const PokemonSelector = ({
                                     <div className={"bg-hoverColor h-full w-2/3 rounded-lg"}>
                                         <Image
                                             className={"p-2"}
-                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`}
+                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}
                                             alt={pokemonData.name}
                                             fill
                                         />
