@@ -37,15 +37,14 @@ const PokemonSelector = ({
                             <div>
                                 <div className={"h-56 relative flex items-center justify-center pt-10"}>
                                     <div className={"bg-hoverColor h-full w-2/3 rounded-lg"}>
-                                        <Image
-                                            className={"p-2"}
-                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}
-                                            alt={pokemonData.name}
-                                            fill
-                                            style={{
-                                                imageRendering: "pixelated",
-                                            }}
-                                        />
+                                        <div className={"h-10 w-10"}>
+                                            <Image
+                                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.id}.png`}
+                                                alt={pokemonData.name}
+                                                fill
+                                                style={{imageRendering: "pixelated"}}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 <h2 className={"text-3xl font-bold"}>
