@@ -50,7 +50,7 @@ const PokemonSelector = ({
                                         {captitalize(pokemonData?.name)}
                                 </h2>
                             </div>
-                        ) : "no pokemon"}
+                        ) : "Please select a Pokémon"}
                     </div>
                     {pokemonData?.stats != undefined ? (
                         <div>
