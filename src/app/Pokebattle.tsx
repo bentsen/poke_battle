@@ -33,7 +33,6 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
         if (first == 0 || second == 0) return;
         setIsLoading(true);
         const req = await axios.get<Prediction>(`/api/battle/${first}/${second}`);
-        //const req = await fetch(`/api/hello`);
         const data = await req.data;
         setWinner(data)
         setIsLoading(false);

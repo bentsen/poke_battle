@@ -29,7 +29,7 @@ const PokemonSelector = ({
 
     return (
         <>
-            <div className={"w-96 h-[456px] md:h-[526px] bg-darkerWhite border border-hoverColor rounded relative"}>
+            <div className={"w-96 h-[456px] md:h-[546px] bg-darkerWhite border border-hoverColor rounded relative"}>
                 <div className={"flex flex-col"}>
                     <div>
                         <Searchbar pokemons={pokemons} setPokemon={setPokemon}/>
