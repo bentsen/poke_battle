@@ -43,6 +43,7 @@ const Pokebattle = ({pokemons}: { pokemons: IPokemon[] }) => {
             <div className={"flex flex-col md:flex-row justify-between items-center px-4 md:px-4 lg:px-30 flex-shrink-0"}>
                 <PokemonSelector pokemons={pokemons} setPokemonId={setPokeOne}/>
                 <div className={"flex flex-col justify-center items-center p-3 md:p-5"}>
+                    <h2 className={"hidden md:block text-6xl tracking-wider font-extrabold mb-5"}>VS</h2>
                     <button
                         className={"w-40 h-9 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded disabled:bg-indigo-800 disabled:cursor-not-allowed"}
                         onClick={() => fight(pokeOne, pokeTwo)}
