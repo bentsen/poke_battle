@@ -3,9 +3,9 @@ const About = () => {
 
     return(
         <>
-            <div className={"w-full max-w-7xl mx-auto flex justify-center"}>
+            <div className={"w-full flex justify-center"}>
                 <div className={"mw-auto w-full bg-darkerWhite h-screen flex justify-center"}>
-                    <div className={"px-2 mt-10"}>
+                    <div className={"px-2 mt-10 max-w-7xl mx-auto"}>
                         <h1 className={"text-3xl font-bold pb-2"}>About</h1>
                         <div>
                             <div>
