@@ -5,7 +5,7 @@ const Navbar = () => {
     return(
         <>
             <nav className={"w-full h-16 bg-betterBlack"}>
-                <div className={"flex items-center justify-between w-full max-w-7xl h-full px-5 md:px-32"}>
+                <div className={"flex flex-row max-w-7xl mx-auto items-center justify-between h-full px-5 md:px-32"}>
                     <div className={"cursor-pointer"}>
                         <Link href={"/"}>
                             <Image src={"/img.png"} alt={"logo"} width={150} height={100}/>
