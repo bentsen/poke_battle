@@ -6,6 +6,8 @@ import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {IPokemon} from "../utils/@types/pokemon.t";
 import {IPokemonData} from "../utils/@types/pokemonData.t";
 import captitalize from "../utils/captitalize";
+import PokeTypeLabel from "../components/PokeTypeLabel";
+
 
 const PokemonSelector = ({
                              pokemons,
@@ -27,7 +29,7 @@ const PokemonSelector = ({
 
     return (
         <>
-            <div className={"w-96 h-[550px] bg-darkerWhite border border-hoverColor rounded relative"}>
+            <div className={"w-96 h-[456px] md:h-[526px] bg-darkerWhite border border-hoverColor rounded relative"}>
                 <div className={"flex flex-col"}>
                     <div>
                         <Searchbar pokemons={pokemons} setPokemon={setPokemon}/>
@@ -35,9 +37,9 @@ const PokemonSelector = ({
                     <div className={"h-auto text-center font-bold text-xl"}>
                         {pokemonData ? (
                             <div>
-                                <div className={"h-56 relative flex items-center justify-center pt-10"}>
-                                    <div className={"bg-hoverColor h-full w-2/3 rounded-lg"}>
-                                        <div className={"h-10 w-10"}>
+                                <div className={"h-40 md:h-56 relative flex items-center justify-center pt-10"}>
+                                    <div className={"bg-hoverColor h-full w-2/4 md:w-2/3 rounded-lg"}>
+                                        <div className={"relative h-full w-full"}>
                                             <Image
                                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.id}.png`}
                                                 alt={pokemonData.name}
@@ -59,30 +61,14 @@ const PokemonSelector = ({
                                 <div className={"flex flex-col items-center justify-center gap-5"}>
                                     <div className={"flex flex-wrap gap-5 text-sm"}>
                                         {pokemonData.types.map((type => (
-                                            <>
-                                                <div key={type.slot} className={"flex flex-col text-center"}>
-                                                    <div className={"h-12"}>
-                                                        <Image
-                                                            src={`/types/Pokémon_${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}_Type_Icon.svg`}
-                                                            alt={"type"} width={50} height={50}
-                                                        />
-                                                        <div
-                                                            className={`px-2 rounded bg-betterBlack`}>
-                                                            <p className={"text-white text-md"}>
-                                                                {captitalize(type.type.name)}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </>
+                                            <PokeTypeLabel type={type.type.name} key={type.type.name}/>
                                         )))}
                                     </div>
                                 </div>
                                 <div>
-                                    <div className={"flex flex-col text-xs"}>
+                                    <div className={"flex flex-col text-xs font-bold pt-2"}>
                                         {pokemonData.stats.map((e) => (
-                                            <div className={"border-b border-black flex items-center p-2"}
+                                            <div className={"border-b last:border-none border-black flex items-center justify-between p-2"}
                                                  key={e.stat.name}>
                                                 <span className={"uppercase"}>{e.stat.name}:</span>
                                                 <span className={"pl-1"}>{e.base_stat}</span>

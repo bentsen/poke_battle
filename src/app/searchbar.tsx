@@ -31,7 +31,7 @@ const Searchbar = ({pokemons, setPokemon} : {pokemons: IPokemon[], setPokemon: R
                     </Combobox.Input>
                     {search && (
                         <div className={"relative"}>
-                            <Combobox.Options className={"bg-betterWhite text-black absolute w-full max-h-56 z-50 rounded-b overflow-y-scroll"}>
+                            <Combobox.Options className={"bg-betterWhite text-black absolute w-full max-h-[405px] md:max-h-[474px] z-50 rounded-b overflow-y-scroll"}>
                                 {filteredPokemons != null && (
                                     filteredPokemons.length === 0 ? (
                                         <SearchOptions pokemon={undefined}/>
